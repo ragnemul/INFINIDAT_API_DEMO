@@ -96,4 +96,29 @@ public class INFINIDAT {
         }
         return pool_id;
     }
+
+    public void createVolume (String volName, int poolId) {
+        try {
+            JSONObject object = new JSONObject();
+
+            object.put("pool_id", poolId);
+            object.put("name", volName);
+            object.put("provtype","THIN");
+            object.put("size",1000000000);
+
+            HttpResponse<JsonNode> response = Unirest.post(this.connURL+"volumes")
+                    .header("Authorization", this.BasicAuth)
+                    .header("content-type", "application/json")
+                    .body(object)
+                    .asJson();
+
+            JsonNode result = response.getBody();
+            String res_string = result.toString();
+
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 }
