@@ -76,7 +76,6 @@ public class INFINIDAT {
     public int getPoolId (String pool_name) {
         int pool_id = -1;
         try {
-
             HttpResponse<JsonNode> response = Unirest.get(this.connURL + "pools?name=eq:" + pool_name)
                     .header("Authorization", this.BasicAuth)
                     .asJson();

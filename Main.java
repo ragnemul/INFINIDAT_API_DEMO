@@ -14,6 +14,5 @@ public class Main {
 
         // Get pool id given a pool name
         int poolId = myInfinidat.getPoolId("EMEA-Pool");
-
     }
 }
